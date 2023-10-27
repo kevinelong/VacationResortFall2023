@@ -7,8 +7,30 @@ let totalCost = 0;
 const TAX_RATE = 0.12;
 
 //INPUTS PARAMETERS
+function isPeak(checkInDate){
+    const JUNE = 5
+    const AUGUST = 7
+    const m = checkInDate.getMonth() //0-11
+    return m >= JUNE && m <= AUGUST;
+}
 function getRate(roomType, checkInDate){
     let rate = 150; //set default for non-peak non-suite
+    const peak = isPeak(checkInDate)
+    
+    if(peak){
+        rate = 250;
+    }
+    
+    if(roomType != "suite"){
+        return rate; //WE ARE DONE
+    }
+
+    //DEFINITALY A SUITE FROM HERE ON OUT
+    if(peak){
+        rate = 350;
+    } else {
+        rate = 210
+    }
     return rate;
 }
 function getDiscountRate(discountType){
@@ -24,6 +46,8 @@ function calculate(checkInDate, nights, roomType, childrenQuantity, discountType
     taxAmount = discountedRoomCost * TAX_RATE;
     totalCost = discountedRoomCost + taxAmount;
 }
-calculate(new Date(), 2, "suite", 2, "senior")
-calculate(new Date(), 20, "suite", 2, "senior")
+calculate(new Date(), 1, "queen", 1, "senior")
+console.log(originalRoomCost, discountAmount, discountedRoomCost, taxAmount, totalCost)
+
+calculate(new Date(), 1, "suite", 1, "senior")
 console.log(originalRoomCost, discountAmount, discountedRoomCost, taxAmount, totalCost)
