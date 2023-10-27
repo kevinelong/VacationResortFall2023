@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overnight Plan</title>
+    <script src="./scripts/calculate.js"></script>
+    <script src="./scripts/main.js"></script>
 </head>
 <body>
     <fieldset>
@@ -15,20 +17,23 @@
 
         <label>
             Room Type:
-            <label><input name="roomType" type="radio" value="queen">Queen</label>
+            <label><input name="roomType" type="radio" value="queen" checked>Queen</label>
             <label><input name="roomType" type="radio" value="king">King</label>
             <label><input name="roomType" type="radio" value="suite">2 Bedroom Suite</label>
         </label>
 
         <label>Adults<input id="adults" type="number" value="1"></label>
+        <label>Children<input id="children" type="number" value="0"></label>
 
         <label>
             Discounts:
-            <label><input name="discounts" type="radio" value="none">None</label>
+            <label><input name="discounts" type="radio" value="none" checked>None</label>
             <label><input name="discounts" type="radio" value="senior">Senior/AAA</label>
             <label><input name="discounts" type="radio" value="military">Military</label>
         </label>
 
+        <button id="go">Calculate</button>
     </fieldset>
+    <pre id="output">Results will display here.</pre>
 </body>
 </html>
